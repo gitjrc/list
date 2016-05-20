@@ -48,7 +48,7 @@
          (multiple-column-p (> number-columns 1))
          (truncation-length (if multiple-column-p 32 50))
          (frame-width (if multiple-column-p (* number-columns 37) 55))
-         (font (format "Inconsolata-%d" (max 8(- 15 number-columns))))
+         (font (format "Inconsolata-%d" (max 8(- 20 number-columns))))
          temp variable-alist )
     (if (string= mode-name "JDE")
         (setq variable-alist (sort (java-find-variables) 
