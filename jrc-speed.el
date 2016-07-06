@@ -11,6 +11,7 @@
               (string= mode-name "Shell-script")
               (string= mode-name "C/l")
               (string= mode-name "Perl")
+              (string= mode-name "Java/l")
               (string= mode-name "Vocola")
               (string= mode-name "GNUmakefile")
               (boundp 'buffer-find-functions))
@@ -27,6 +28,7 @@
          (is-c (string=  mode-name "C/l"))
          (is-makefile (string= mode-name "GNUmakefile"))
          (is-vocola (string=  mode-name "Vocola"))
+         (is-java (string=  mode-name "Java/l"))
          (speed-buffer (get-buffer-create "*speed*"))
          (function-alist 
           (cond  (is-python (jrc-speed-find-python-functions))
@@ -35,6 +37,7 @@
                  (is-crap (jrc-speed-find-perl-functions))
                  (is-makefile (jrc-speed-find-makefile-functions))
                  (is-vocola (jrc-speed-find-vocola-functions))
+                 (is-java (jrc-speed-find-java-functions))
                  (t (sort 
                      (jrc-speed-create-function-alist) 
                      '(lambda (x y) (let ((nx (car x)) (px (cdr x))
@@ -253,3 +256,16 @@
   (insert (car (nth index *jrc-speed-alist*))))
 
 
+(defun jrc-speed-find-java-functions ()
+  (interactive)
+  (let ((result)
+        (kw "protected\\|private\\|public"))
+    (save-excursion
+      (beginning-of-buffer)
+      (while (re-search-forward
+              (concat "^[ ]*\\(" kw "\\)[ ]+[a-zA-Z0-9_]+[ ]*[a-zA-Z0-9_]*"
+                      "[ ]+\\([a-zA-Z0-9_]+\\)[ ]*(") nil t)
+        (let ((method-name (match-string 2)))
+          (setq result (cons (cons method-name (point))
+                             result)))))
+    (jrc-speed-sort-result result)))
