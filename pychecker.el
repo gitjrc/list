@@ -1,3 +1,14 @@
+(defun my-hook()
+;  (save-excursion
+;    (goto-char  compilation-filter-start)
+    (message "%d %d"  compilation-filter-start  (point))
+    (message "%s" my_root)
+
+    (toggle-read-only)
+    (goto-char compilation-filter-start)
+    ( insert (number-to-string  (point)))
+    (toggle-read-only)
+)
 
 ;;;###autoload
 (defun pylint ()
@@ -6,19 +17,11 @@
 
   (interactive)
   (let* ((file (buffer-file-name (current-buffer)))
-         (pylint "/ade_autofs/ade_infra/DBDEVENV_MAIN_GENERIC.rdd/LATEST/dbdevenv/bin/pylint ")
-         (view (getenv "ADE_VIEW_NAME"))
-         (view_root (getenv "ADE_VIEW_ROOT"))
-         (root (if view_root view_root "/ade_autofs/ade_infra/ORAREVIEW_MAIN_GENERIC.rdd/LATEST"))
          (config (if (file-exists-p "./pylintrc-tcompile")
-                     "./pylintrc-tcompile"
-                   "~/exadata-git/python-utilities/pylintrc"))
-         (options (concat "--output-format=parseable "
+                     "./pylintrc-tcompile"))
+         (options (concat "--msg-template='{path}:{line}: [{msg_id}({symbol}),"
+                          "{obj}] {msg}' "
                           (concat "--rcfile=" config)))
-         ;; (path (concat root "/orareview:" 
-         ;;               root "/orareview/oracle:" 
-         ;;               root "/orareview/codereview:"
-         ;;               root "/orareview/generic_src/py"))
          (command (concat "pylint " options " " file)))
 ;    (setenv "PYTHONPATH" path)
     (setq my_root "mind")
