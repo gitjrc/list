@@ -17,7 +17,7 @@
 (defun jrc-normal-window ()
   "make selected frame normal size"
   (interactive)
-  (set-frame-position (selected-frame) 920 20)
+  (set-frame-position (selected-frame) 770 45)
   (set-frame-size (selected-frame) 86 60 ))
 (defun jrc-wide-window ()
   "make selected frame full-screen width"
@@ -39,7 +39,8 @@
 ;
 ; Python
 ;
-(autoload 'pylint "pychecker" "Run pylint" t)
+(load-library "pychecker") ;; 
+;;(autoload 'pylint "pychecker" "Run pylint" t)
 (autoload 'jrc-python-show-function-name "jrc-python")
 (autoload 'python-fix-line  "python-fix" "fix Python line of code" t)
 (autoload 'jrc-annotate-tags "jrc-annotate-tags" "Annotate with tags" t)
@@ -121,18 +122,6 @@
 ;; git
 ;; 
 (autoload 'jrc-git-diff "jrc-git" "git diff current buffer" t)
-;;
-;; ade 
-;;
-(autoload 'ade-co "jrc-ade"  "check out file" t)
-(autoload 'ade-unco "jrc-ade"  "uncheck out file" t)
-(autoload 'ade-ci "jrc-ade"  "check in file" t)
-(autoload 'ade-describetrans "jrc-ade"  "describetrans" t)
-(autoload 'ade-describe-this-file "jrc-ade" "describe this file" t)
-(autoload 'ade-igot "jrc-ade"  "list checked out files" t)
-(autoload 'ade-diff-pred "jrc-ade"  "diff with previous version" t)
-(autoload 'ade-diff-transaction-base "jrc-ade"  "diff with  base" t)
-(autoload 'ade-diff-full-name "jrc-ade" "diff with predecessor" t)
 ;;
 ;; vocola
 ;;
