@@ -178,22 +178,22 @@
 
 ;;; functions that sort
 ;;;###autoload
-(defun jrc-pad-directories-to-top ()
-  "sort pad , moving directories to beginning"
-  (interactive)
-  (jrc-pad-internal-sort *jrc-pad-directory-face))
+;; (defun jrc-pad-directories-to-top ()
+;;   "sort pad , moving directories to beginning"
+;;   (interactive)
+;;   (jrc-pad-internal-sort *jrc-pad-directory-face))
 
-;;;###autoload
-(defun jrc-pad-files-to-top ()
-  "sort pad , moving files to beginning"
-  (interactive)
-  (jrc-pad-internal-sort *jrc-pad-file-face))
+;; ;;;###autoload
+;; (defun jrc-pad-files-to-top ()
+;;   "sort pad , moving files to beginning"
+;;   (interactive)
+;;   (jrc-pad-internal-sort *jrc-pad-file-face))
 
-;;;###autoload
-(defun jrc-pad-identifiers-to-top ()
-  "sort pad , moving identifiers to beginning"
-  (interactive)
-  (jrc-pad-internal-sort *jrc-pad-identifier-face))
+;; ;;;###autoload
+;; (defun jrc-pad-identifiers-to-top ()
+;;   "sort pad , moving identifiers to beginning"
+;;   (interactive)
+;;   (jrc-pad-internal-sort *jrc-pad-identifier-face))
 
 ;;; functions that fetch an identifier and do something with it
 ;;;###autoload
